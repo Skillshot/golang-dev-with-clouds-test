@@ -33,7 +33,7 @@ status:
 
 The `CoinbasePinger` CRD and the operator are created using the Kubebuilder (https://book.kubebuilder.io/).
 
-Whenever `CoinbasePinger` CR is created or updated, the operator validates the `spec` fields and a controller reconciles the state: it creates or updates a Kubernetes `CronJob` that runs every `spec.interval`. The application executed by the `CronJob` pings the Coinbase API endpoint: `https://api.coinbase.com/v2/{spec.endpoint}` and updates the `CoinbasePinger` CRD `status` according to a result.
+Whenever `CoinbasePinger` custom resource (CR) is created or updated, the operator validates the `spec` fields and a controller reconciles the state: it creates or updates a Kubernetes `CronJob` that runs every `spec.interval`. The application executed by the `CronJob` pings the Coinbase API endpoint: `https://api.coinbase.com/v2/{spec.endpoint}` and updates the `CoinbasePinger` CR `status` according to a result.
 
 When `CoinbasePinger` CR is deleted, the `CronJob` is deleted as well.
 
@@ -41,14 +41,15 @@ When `CoinbasePinger` CR is deleted, the `CronJob` is deleted as well.
 
 The application that is executed by the `CronJob` is implemented as a separate Go module and is built as a Docker image, that is used by the `CronJob`.
 
-## Overall project structure
+## Overall project structure (not all files shown)
 
 ```
 project-root:
   - operator/
-      <kubebuilder operator here>
+      <kubebuilder operator files>
+      Dockerfile
   - app/
-      <Conbase API pinger application>
+      <Conbase API pinger application files>
       Dockerfile
 ```
 
