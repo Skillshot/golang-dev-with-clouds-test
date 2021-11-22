@@ -1,4 +1,7 @@
-# Coinbase pinger
+> ### This project is a pre-employment test for a Golang Developer With Clouds position.
+> ### If some requirements are not clear - feel free to resolve them on your own in a way you find reasonable.
+
+## Coinbase pinger
 
 Coinbase pinger is an application that periodically pings the Coinbase API and updates a status of a custom Kubernetes resource according to a result.
 
@@ -29,7 +32,7 @@ status:
     lastTransitionTime: ""
 ```
 
-## Operator
+### Operator
 
 The `CoinbasePinger` CRD and the operator are created using the Kubebuilder (https://book.kubebuilder.io/).
 
@@ -37,11 +40,11 @@ Whenever `CoinbasePinger` custom resource (CR) is created or updated, the operat
 
 When `CoinbasePinger` CR is deleted, the `CronJob` is deleted as well.
 
-## Application
+### Application
 
 The application that is executed by the `CronJob` is implemented as a separate Go module and is built as a Docker image, that is used by the `CronJob`.
 
-## Overall project structure (not all files shown)
+### Overall project structure (not all files shown)
 
 ```
 project-root:
@@ -59,7 +62,7 @@ $ ./gradlew installLocal
 ```
 which builds docker images, creates a KIND cluster (if not exists), loads images to a cluster and installs the project.
 
-## Definition of done
+### Definition of done
 
 - The project can be installed on a local KIND cluster using the command `$ ./gradlew installLocal`.
 - The `CoinbasePinger` can be applied using `$ kubectl create -f ./operator/config/samples/dev.org_v1_coinbasepinger.yaml`.
