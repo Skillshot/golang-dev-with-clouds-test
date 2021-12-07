@@ -36,9 +36,9 @@ status:
 
 The `CoinbasePinger` CRD and the operator are created using the Kubebuilder (https://book.kubebuilder.io/).
 
-Whenever `CoinbasePinger` custom resource (CR) is created or updated, the operator validates the `spec` fields and a controller reconciles the state: it creates or updates a Kubernetes `CronJob` that runs every `spec.interval`. The application executed by the `CronJob` pings the Coinbase API endpoint: `https://api.coinbase.com/v2/{spec.endpoint}` and attaches results to labels of a POD on which it is executed.
+Whenever `CoinbasePinger` custom resource (CR) is created or updated, the operator validates the `spec` fields and a controller reconciles the state: it creates or updates a Kubernetes `CronJob` that runs every `spec.interval`. The application executed by the `CronJob` pings the Coinbase API endpoint: `https://api.coinbase.com/v2/{spec.endpoint}` and attaches results to annotations of a POD on which it is executed.
 
-The `CoinbasePinger` operator watches the PODs created by the `CronJob` and updates the `CoinbasePinger` CR `status` according to a result that is found in POD labels.
+The `CoinbasePinger` operator watches the PODs created by the `CronJob` and updates the `CoinbasePinger` CR `status` according to a result that is found in POD annotations.
 
 When `CoinbasePinger` CR is deleted, the `CronJob` is deleted as well.
 
