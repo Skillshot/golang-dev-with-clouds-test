@@ -70,7 +70,6 @@ which builds docker images, creates a KIND cluster (if not exists), loads images
 - The `CoinbasePinger` can be applied using `$ kubectl create -f ./operator/config/samples/dev.org_v1_coinbasepinger.yaml`.
 - The `CoinbasePinger` shows the status and is updated at interval: `$ kubectl get coinbasepingers -o yaml -w`.
   
+## Useful links
 
-
-
-
+K8s API client usage example: https://github.com/kubernetes/client-go/blob/master/examples/in-cluster-client-configuration/main.go
